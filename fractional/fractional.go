@@ -15,7 +15,7 @@ type FAL struct {
 	Deno int64 //denominator 分母 (一定不为0)
 }
 
-//Model 创建一个分数(分子，分母)，分母默认为1
+//Model Create a score (molecular, denominator) with a denominator default of 1 创建一个分数(分子，分母)，分母默认为1:
 func Model(nd ...int64) *FAL {
 	var f FAL
 	if len(nd) == 1 {
