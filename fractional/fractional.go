@@ -87,7 +87,7 @@ func (s *FAL) Div(f FAL) *FAL {
 	return s
 }
 
-//verdict 计算结果
+//Verdict 计算结果
 func (s *FAL) Verdict() float64 {
 	return float64(s.Nume) / float64(s.Deno)
 }
