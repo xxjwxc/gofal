@@ -1,6 +1,6 @@
 # gofal
 
-[English](README.md)
+[中文文档](README.md)
 
 - Fractional Operational Correlation API base on golang
 - Supporting Precision Operations
