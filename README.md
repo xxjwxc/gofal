@@ -75,7 +75,7 @@
 0.3333333333333333
 ```
 
-6、链式表达式
+6、Chain expression
 
 ```go
 	tmp.Add(*fractional.Model(1)).Mul(*tmp)
