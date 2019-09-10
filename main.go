@@ -21,7 +21,7 @@ func call() {
 
 	tmp = fractional.Model(3, 4)
 	tmp1 = fractional.Model(2, 3)
-	fmt.Println(tmp.Div(*tmp1))
+	fmt.Println(tmp.Div(tmp1))
 
 	tmp = fractional.Model(1, 3)
 	fmt.Println(tmp.Verdict())
