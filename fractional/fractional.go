@@ -48,7 +48,7 @@ func (s *FAL) offset() {
 }
 
 //Add 分数加法
-func (s *FAL) Add(f FAL) *FAL {
+func (s *FAL) Add(f *FAL) *FAL {
 	//获取最小公倍数
 	lcm := mymath.Lcm(f.Deno, s.Deno)
 	s.broad(lcm)
@@ -60,7 +60,7 @@ func (s *FAL) Add(f FAL) *FAL {
 }
 
 //Sub 分数减法
-func (s *FAL) Sub(f FAL) *FAL {
+func (s *FAL) Sub(f *FAL) *FAL {
 	//获取最小公倍数
 	lcm := mymath.Lcm(s.Deno, f.Deno)
 	s.broad(lcm)
@@ -72,7 +72,7 @@ func (s *FAL) Sub(f FAL) *FAL {
 }
 
 //Mul 乘法
-func (s *FAL) Mul(f FAL) *FAL {
+func (s *FAL) Mul(f *FAL) *FAL {
 	s.Deno *= f.Deno
 	s.Nume *= f.Nume
 	s.offset()
@@ -80,9 +80,9 @@ func (s *FAL) Mul(f FAL) *FAL {
 }
 
 //Div 乘法
-func (s *FAL) Div(f FAL) *FAL {
+func (s *FAL) Div(f *FAL) *FAL {
 	tmp := Model(f.Deno, f.Nume)
-	s.Mul(*tmp)
+	s.Mul(tmp)
 	s.offset()
 	return s
 }

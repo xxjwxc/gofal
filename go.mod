@@ -1,4 +1,4 @@
-module github.com/xxjwxc/gofal
+module gofal
 
 go 1.12
 
