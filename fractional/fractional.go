@@ -8,10 +8,8 @@ import (
 
 // FAL Fractional operation correlation
 type FAL struct {
-	// Nume numerator
-	Nume int64 // 分子
-	// denominator (must not be zero)
-	Deno int64 // 分母 (一定不为0)
+	Nume int64 // Nume numerator.分子
+	Deno int64 // denominator (must not be zero).分母 (一定不为0)
 }
 
 // Model Create a score (molecular, denominator) with a denominator default of 1
