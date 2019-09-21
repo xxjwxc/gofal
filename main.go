@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gofal/fractional"
+	"github.com/xxjwxc/gofal/fractional"
 )
 
 func call() {
