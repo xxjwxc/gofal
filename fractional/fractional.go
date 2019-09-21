@@ -12,6 +12,11 @@ type FAL struct {
 	Deno int64 // denominator (must not be zero).分母 (一定不为0)
 }
 
+// Format output
+func (f FAL) String() string { // 格式化输出
+	return fmt.Sprintf("%v/%v", f.Nume, f.Deno)
+}
+
 // Model Create a score (molecular, denominator) with a denominator default of 1
 func Model(nd ...int64) FAL { // 创建一个分数(分子，分母)，分母默认为1
 	var f FAL
