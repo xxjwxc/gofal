@@ -48,3 +48,12 @@ func TestError(t *testing.T) {
 	tmp := Model(3, 0)
 	fmt.Println("tmp:", tmp.Verdict())
 }
+
+func TestChainRule(t *testing.T) {
+	tmp := Model(1, 2)
+	fmt.Println(outString(tmp))
+	tmp.Add(Model(1, 3))
+	fmt.Println(outString(tmp))
+	tmp.Mul(Model(1, 4))
+	fmt.Println(outString(tmp))
+}
