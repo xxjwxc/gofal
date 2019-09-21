@@ -46,7 +46,7 @@ func TestDiv(t *testing.T) {
 // }
 
 func TestChainRule(t *testing.T) {
-	tmp := Model(1, 2)
+	tmp := Model(1)
 	tmp.Add(Model(1, 3)).Mul(Model(1, 4))
 	fmt.Println(tmp)
 }
