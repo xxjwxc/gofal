@@ -13,7 +13,7 @@ type FAL struct {
 }
 
 // Model Create a score (molecular, denominator) with a denominator default of 1
-func Model(nd ...int64) *FAL { // 创建一个分数(分子，分母)，分母默认为1
+func Model(nd ...int64) FAL { // 创建一个分数(分子，分母)，分母默认为1
 	var f FAL
 	if len(nd) == 1 {
 		f.Nume = nd[0]
@@ -24,10 +24,10 @@ func Model(nd ...int64) *FAL { // 创建一个分数(分子，分母)，分母�
 	}
 
 	if f.Deno == 0 { // denominator is 0 .分母为0
-		panic(fmt.Sprintf("fractional init error. if denominator can't zero."))
+		panic(fmt.Sprintf("fractional init error. denominator can't zero."))
 	}
 
-	return &f
+	return f
 }
 
 // Broadsheet  .阔张
@@ -45,7 +45,7 @@ func (s *FAL) offset() {
 }
 
 // Add Fraction addition
-func (s *FAL) Add(f *FAL) *FAL {
+func (s *FAL) Add(f FAL) *FAL {
 	// Getting the Minimum Common Multiplier 获取最小公倍数
 	lcm := mymath.Lcm(f.Deno, s.Deno)
 	s.broad(lcm)
@@ -57,7 +57,7 @@ func (s *FAL) Add(f *FAL) *FAL {
 }
 
 // Sub fraction subtraction
-func (s *FAL) Sub(f *FAL) *FAL {
+func (s *FAL) Sub(f FAL) *FAL {
 	// Getting the Minimum Common Multiplier 获取最小公倍数
 	lcm := mymath.Lcm(s.Deno, f.Deno)
 	s.broad(lcm)
@@ -69,7 +69,7 @@ func (s *FAL) Sub(f *FAL) *FAL {
 }
 
 // Mul multiplication
-func (s *FAL) Mul(f *FAL) *FAL {
+func (s *FAL) Mul(f FAL) *FAL { // 乘法
 	s.Deno *= f.Deno
 	s.Nume *= f.Nume
 	s.offset()
@@ -77,9 +77,8 @@ func (s *FAL) Mul(f *FAL) *FAL {
 }
 
 // Div division
-func (s *FAL) Div(f *FAL) *FAL { // 除法
-	tmp := Model(f.Deno, f.Nume)
-	s.Mul(tmp)
+func (s *FAL) Div(f FAL) *FAL { // 除法
+	s.Mul(Model(f.Deno, f.Nume))
 	s.offset()
 	return s
 }
