@@ -6,38 +6,42 @@ import (
 )
 
 func TestAdd(t *testing.T) {
-	tmp := Model(7, 12)
-	tmp1 := Model(1, 12)
-	result := tmp
-	result.Add(tmp1)
-	fmt.Println(fmt.Sprintf("(%v) + (%v) = (%v)", tmp, tmp1, result))
-	fmt.Println("result:", result.Verdict())
+	tmp := Model(1, 2)
+	tmp2 := Model(1, 2)
+	result := Model(1, 1)
+	actualResult := tmp.Add(tmp2) // (1/2) + (1/2)
+	if *actualResult != result {
+		t.Errorf("Expected %s, got %s", result, *actualResult)
+	}
 }
 
 func TestSub(t *testing.T) {
 	tmp := Model(1, 4)
 	tmp1 := Model(1, 3)
-	result := tmp
-	result.Sub(tmp1)
-	fmt.Println(fmt.Sprintf("(%v) - (%v) = (%v)", tmp, tmp1, result))
-	fmt.Println("result:", result.Verdict())
+	result := Model(-1, 12)
+	actualResult := tmp.Sub(tmp1) // (1/4) - (1/3)
+	if *actualResult != result {
+		t.Errorf("Expected %s, got %s", result, *actualResult)
+	}
 }
 func TestMul(t *testing.T) {
 	tmp := Model(3, 4)
 	tmp1 := Model(2, 3)
-	result := tmp
-	result.Mul(tmp1)
-	fmt.Println(fmt.Sprintf("(%v) * (%v) = (%v)", tmp, tmp1, result))
-	fmt.Println("result:", result.Verdict())
+	result := Model(1, 2)
+	actualResult := tmp.Mul(tmp1) // (3/4) * (2/3)
+	if *actualResult != result {
+		t.Errorf("Expected %s, got %s", result, *actualResult)
+	}
 }
 
 func TestDiv(t *testing.T) {
 	tmp := Model(3, 4)
 	tmp1 := Model(2, 3)
-	result := tmp
-	result.Div(tmp1)
-	fmt.Println(fmt.Sprintf("(%v) * (%v) = (%v)", tmp, tmp1, result))
-	fmt.Println("result:", result.Verdict())
+	result := Model(9, 8)
+	actualResult := tmp.Div(tmp1) // (3/4) / (2/3)
+	if *actualResult != result {
+		t.Errorf("Expected %s, got %s", result, *actualResult)
+	}
 }
 
 // func TestError(t *testing.T) {
@@ -47,6 +51,6 @@ func TestDiv(t *testing.T) {
 
 func TestChainRule(t *testing.T) {
 	tmp := Model(1)
-	tmp.Add(Model(1, 3)).Mul(Model(1, 4))
+	tmp.Add(Model(1, 3)).Mul(Model(1, 4)) // (1 + (1/3))*(1/4)
 	fmt.Println(tmp)
 }
