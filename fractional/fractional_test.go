@@ -1,7 +1,6 @@
 package fractional
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -53,5 +52,8 @@ func TestDiv(t *testing.T) {
 func TestChainRule(t *testing.T) {
 	tmp := Model(1)
 	tmp.Add(Model(1, 3)).Mul(Model(1, 2)) // (1 + (1/3))*(1/2)
-	fmt.Println(tmp)
+	result := Model(2, 3)
+	if tmp != result {
+		t.Errorf("Expected %s, got %s", result, tmp)
+	}
 }
